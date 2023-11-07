@@ -25,7 +25,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: get source code
-              uses: actions/checkout/v4
+              uses: actions/checkout@v4
             - name: instal dependencies
               run: npm ci
             - name: build project
