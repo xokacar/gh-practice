@@ -1,0 +1,36 @@
+name: Linttestdeploy
+on: push
+jobs: 
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get source code
+              uses: actions/checkout@v4
+            - name: instal dependencies
+              run: npm ci
+            - name: run lint
+              run : npm run lint 
+    test: 
+        needs: lint
+        runs-on: ubuntu-latest
+        steps: 
+            - name: get source code
+              uses: actions/checkout@v4
+            - name: instal dependencies
+              run: npm ci
+            - name: run test
+              run: npm run test
+    deploy: 
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: get source code
+              uses: actions/checkout/v4
+            - name: instal dependencies
+              run: npm ci
+            - name: build project
+              run: npm build
+
+            
+
+        
